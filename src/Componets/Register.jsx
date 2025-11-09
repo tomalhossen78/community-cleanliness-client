@@ -1,16 +1,73 @@
-import React from "react";
+import React, { use, useRef, useState } from "react";
 import Container from "./Container";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
+import { AuthContext } from "../Context/AuthContext";
+import Swal from "sweetalert2";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const passwordRef = useRef();
+  const { handleGoogleSignIn, handleCreateUser, updateUserProfile } =
+    use(AuthContext);
+  const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+  const handlePassworldChange = () => {
+    const password = passwordRef.current.value;
+    if (!passwordRegex.test(password)) {
+      setError(
+        "❌ Password must contain at least one uppercase, one lowercase, and be at least 6 characters long."
+      );
+    } else {
+      setError("");
+    }
+  };
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
+    const displayName = form.name.value;
     const email = form.email.value;
     const photoURL = form.photoURL.value;
     const password = form.password.value;
-    console.log(name, email, photoURL, password);
+    console.log(displayName, email, photoURL, password);
+    handleCreateUser(email, password)
+      .then(() => {
+        updateUserProfile(displayName, photoURL);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User Created Successfully",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: error,
+          showConfirmButton: false,
+          timer: 1000,
+        });
+      });
+  };
+  const googleSignIn = () => {
+    handleGoogleSignIn()
+      .then(() => {
+        // console.log(result.user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Sign in with google Successfully",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <Container className="my-12">
@@ -25,6 +82,7 @@ const Register = () => {
               className="input"
               placeholder="Name"
               name="name"
+              required
             />
             {/* email */}
             <label className="label">Email</label>
@@ -33,6 +91,7 @@ const Register = () => {
               className="input"
               placeholder="Email"
               name="email"
+              required
             />
             {/* photourl */}
             <label className="label">PhotoURL</label>
@@ -41,6 +100,7 @@ const Register = () => {
               className="input"
               placeholder="PhotoURL"
               name="photoURL"
+              required
             />
             {/* password */}
             <label className="label">Password</label>
@@ -49,10 +109,17 @@ const Register = () => {
               className="input"
               placeholder="Password"
               name="password"
+              required
+              ref={passwordRef}
+              onChange={handlePassworldChange}
             />
+            <div>{error}</div>
             <button className="btn btn-neutral mt-4">Register</button>
             {/* google */}
-            <button className="btn bg-white text-black border-[#e5e5e5]">
+            <button
+              onClick={googleSignIn}
+              className="btn bg-white text-black border-[#e5e5e5]"
+            >
               <svg
                 aria-label="Google logo"
                 width="16"

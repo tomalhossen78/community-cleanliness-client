@@ -1,18 +1,62 @@
-import React from "react";
+import React, { use } from "react";
 import Container from "./Container";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
+import { AuthContext } from "../Context/AuthContext";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { handleSignInuser } = use(AuthContext);
+  const handleOnsubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    handleSignInuser(email, password)
+      .then(() => {
+        // console.log(result.user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Signin Successfully",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: error,
+          showConfirmButton: false,
+          timer: 1000,
+        });
+      });
+  };
   return (
     <Container className="my-20">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto">
         <h1 className="text-center pt-4 font-bold text-3xl">Login</h1>
         <div className="card-body">
-          <fieldset className="fieldset">
+          <form onSubmit={handleOnsubmit} className="fieldset">
             <label className="label">Email</label>
-            <input type="email" className="input" placeholder="Email" />
+            <input
+              type="email"
+              className="input"
+              placeholder="Email"
+              name="email"
+              required
+            />
             <label className="label">Password</label>
-            <input type="password" className="input" placeholder="Password" />
+            <input
+              type="password"
+              className="input"
+              placeholder="Password"
+              name="password"
+              required
+            />
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>
@@ -59,7 +103,7 @@ const Login = () => {
                 </NavLink>
               </p>
             </div>
-          </fieldset>
+          </form>
         </div>
       </div>
     </Container>
