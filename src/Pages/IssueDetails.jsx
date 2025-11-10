@@ -10,13 +10,16 @@ import {
 } from "react-icons/io";
 import { AuthContext } from "../Context/AuthContext";
 import Loading from "../Componets/Loading";
+import Swal from "sweetalert2";
+import { DateFormat } from "../utility/DateFormat";
 
 const IssueDetails = () => {
   const [details, setdetails] = useState({});
   const [loading, setLoading] = useState(true);
   const { user } = use(AuthContext);
   const { id } = useParams();
-  const { image, title, cat, location, date, amount, description } = details;
+  const { image, title, cat, location, date, amount, description, _id } =
+    details;
   useEffect(() => {
     fetch(`http://localhost:3000/issues/${id}`)
       .then((res) => res.json())
@@ -26,15 +29,7 @@ const IssueDetails = () => {
         setLoading(false);
       });
   }, [id]);
-  const formattedDate = new Date(date).toLocaleString("en-US", {
-    timeZone: "Asia/Dhaka",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: true,
-  });
+  const formattedDate = DateFormat(date);
   const handleAddContribute = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -46,6 +41,7 @@ const IssueDetails = () => {
     const address = form.address.value;
     const info = form.info.value;
     const newCotribution = {
+      issueId: _id,
       title,
       amount,
       name,
@@ -54,9 +50,30 @@ const IssueDetails = () => {
       address,
       info,
       date: new Date(),
+      category: cat,
     };
-    console.log(newCotribution);
-    form.reset();
+    // console.log(newCotribution);
+    fetch("http://localhost:3000/my-contributions", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newCotribution),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          document.getElementById("my_modal_5").close();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your Contribution Added successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          form.reset();
+        }
+      });
   };
   if (loading) {
     return <Loading />;
@@ -116,6 +133,7 @@ const IssueDetails = () => {
                 className="input w-full"
                 placeholder="e.g. Garbage"
                 required
+                value={title}
               />
             </fieldset>
 
@@ -185,7 +203,6 @@ const IssueDetails = () => {
             </fieldset>
 
             <button
-              onClick={() => document.getElementById("my_modal_5").close()}
               type="sumbit"
               className="btn btn-primary w-full col-span-2 my-4 text-lg p-4"
             >
