@@ -19,9 +19,9 @@ const Banner = () => {
         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
         spaceBetween={30}
         slidesPerView={1}
-        navigation
+        // navigation
         pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
+        // scrollbar={{ draggable: true }}
         // onSwiper={(swiper) => console.log(swiper)}
         // onSlideChange={() => console.log("Slide changed")}
         autoplay={{
@@ -32,7 +32,7 @@ const Banner = () => {
         <SwiperSlide>
           <div className="relative">
             <img
-              src="https://i.ibb.co/7JL7jG4y/engin-akyurt-M2-W0-J6-Sqi-Sg-unsplash.jpg"
+              src="https://i.ibb.co.com/YT0kTZjZ/vvills-8am2t-EI6a-Eg-unsplash.jpg"
               alt="Community"
               className="w-full h-[500px] object-cover"
             />
@@ -69,7 +69,7 @@ const Banner = () => {
         <SwiperSlide>
           <div className="relative">
             <img
-              src="https://i.ibb.co/7JL7jG4y/engin-akyurt-M2-W0-J6-Sqi-Sg-unsplash.jpg"
+              src="https://i.ibb.co.com/HpgHhhq4/yves-cedric-schulze-s-Pi-E3gl-WEY-unsplash.jpg"
               alt="Community"
               className="w-full h-[500px] object-cover"
             />
@@ -88,8 +88,7 @@ const Banner = () => {
         <SwiperSlide>
           <div className="relative">
             <img
-              src="https://i.ibb.co/7JL7jG4y/engin-akyurt-M2-W0-J6-Sqi-Sg-unsplash.jpg"
-              alt="Community"
+              src="https://i.ibb.co.com/spvrbSsM/craig-chilton-13dud-PW47e-Q-unsplash.jpg"
               className="w-full h-[500px] object-cover"
             />
           </div>

@@ -160,7 +160,7 @@ const NavBar = () => {
                   <li>
                     <button
                       onClick={logoutUser}
-                      className="btn btn-xs text-left bg-linear-to-r from-pink-500 to-red-500 text-white"
+                      className="btn btn-xs text-left bg-linear-to-r from-blue-500 to-blue-800 text-white"
                     >
                       <IoLogOut /> Logout
                     </button>
@@ -170,7 +170,7 @@ const NavBar = () => {
             ) : (
               <Link
                 to={"/login"}
-                className="btn rounded-full border-gray-300  btn-sm bg-linear-to-r from-pink-500 to-red-500 text-white"
+                className="btn rounded-full border-gray-300  btn-sm bg-linear-to-r from-blue-500 to-blue-800 text-white"
               >
                 {" "}
                 <IoLogIn /> Login

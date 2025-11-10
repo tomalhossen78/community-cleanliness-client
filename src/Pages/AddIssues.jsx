@@ -1,10 +1,12 @@
 import React, { use, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
+import Swal from "sweetalert2";
 
 const AddIssues = () => {
   const { user } = use(AuthContext);
   const [cat, setCat] = useState("Garbage");
   const [status, setStatus] = useState("ongoing");
+  // const [issues, setIssues] = useState([]);
   const handleCatChange = (e) => {
     setCat(e.target.value);
   };
@@ -31,8 +33,30 @@ const AddIssues = () => {
       date: new Date(),
       description,
     };
-    console.log(newIssues);
-    form.reset();
+    // console.log(newIssues);
+    fetch("http://localhost:3000/issues", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newIssues),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your Issues Added successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          // newIssues._id = data.insertedId;
+          // const updateIssues = [...issues, newIssues];
+          // setIssues(updateIssues);
+          form.reset();
+        }
+      });
   };
   return (
     <div>
