@@ -10,7 +10,7 @@ import MyContribution from "../Pages/MyContribution";
 import Profile from "../Pages/Profile";
 import PrivateRoute from "./PrivateRoute";
 import AddIssues from "../Pages/AddIssues";
-
+import IssueDetails from "../Pages/IssueDetails";
 export const Router = createBrowserRouter([
   {
     path: "/",
@@ -61,6 +61,14 @@ export const Router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Profile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "issues-details/:id",
+        element: (
+          <PrivateRoute>
+            <IssueDetails />
           </PrivateRoute>
         ),
       },

@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from "react";
 import Container from "./Container";
 import Issue from "./issue";
+import Loading from "./Loading";
 
 const RecentComplaints = () => {
   const [issues, setIssues] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     fetch("http://localhost:3000/recent-complaints")
       .then((res) => res.json())
       .then((data) => {
         setIssues(data);
-        console.log(data);
+        // console.log(data);
+        setLoading(false);
       });
   }, []);
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <Container className="my-12">
       <h1 className="text-4xl font-semibold text-center mb-6">
