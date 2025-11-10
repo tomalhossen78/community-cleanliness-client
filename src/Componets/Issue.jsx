@@ -3,7 +3,7 @@ import React from "react";
 const Issue = ({ issue }) => {
   const { title, image, cat, location, amount } = issue;
   return (
-    <div className="card bg-base-100 w-78 shadow-sm relative">
+    <div className="card bg-base-100 shadow-sm relative">
       <figure>
         <img src={image} />
       </figure>

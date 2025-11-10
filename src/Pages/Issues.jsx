@@ -1,7 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Container from "../Componets/Container";
+import Issue from "../Componets/issue";
 
 const Issues = () => {
-  return <div>This is Issue page</div>;
+  const [issues, setIssues] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:3000/issues")
+      .then((res) => res.json())
+      .then((data) => {
+        setIssues(data);
+        console.log(data);
+      });
+  }, []);
+  return (
+    <Container className="my-6">
+      <h1 className="text-4xl text-center mb-6 font-bold">
+        All <span className="text-blue-700">Issues</span>
+      </h1>
+      <div className="grid grid-cols-3 gap-6">
+        {issues.map((issue) => (
+          <Issue issue={issue} />
+        ))}
+      </div>
+    </Container>
+  );
 };
 
 export default Issues;
