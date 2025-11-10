@@ -45,7 +45,7 @@ const MyContribution = () => {
                       </div>
                     </div>
                     <div>
-                      <div className="font-bold">{contribution.title}</div>
+                      <div className="font-semibold">{contribution.title}</div>
                     </div>
                   </div>
                 </td>
