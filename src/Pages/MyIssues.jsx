@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 import { DateFormat } from "../utility/DateFormat";
 import { AuthContext } from "../Context/AuthContext";
 import Container from "../Componets/Container";
@@ -7,7 +7,15 @@ import Swal from "sweetalert2";
 const MyIssues = () => {
   const [issues, setIssues] = useState([]);
   const { user } = use(AuthContext);
+  const [cat, setCat] = useState("Garbage");
+  const [status, setStatus] = useState("ongoing");
   const [refetch, setRefetch] = useState(false);
+  const handleCatChange = (e) => {
+    setCat(e.target.value);
+  };
+  const handleChange = (e) => {
+    setStatus(e.target.value);
+  };
   useEffect(() => {
     fetch(`http://localhost:3000/my-issues?email=${user.email}`)
       .then((res) => res.json())
@@ -16,6 +24,39 @@ const MyIssues = () => {
         setIssues(data);
       });
   }, [user, refetch]);
+  const handleIssueSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const title = form.title.value;
+    const amount = form.amount.value;
+    const image = form.image.value;
+    const location = form.location.value;
+    const email = form.email.value;
+    const description = form.description.value;
+    const updatedIssues = {
+      title,
+      amount,
+      cat,
+      image,
+      location,
+      status,
+      email,
+      date: new Date(),
+      description,
+    };
+    console.log(updatedIssues);
+    fetch(`http://localhost:3000/issues/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedIssues),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
   const handleIssueDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -51,6 +92,7 @@ const MyIssues = () => {
       }
     });
   };
+  const modalref = useRef();
   return (
     <Container>
       <div className="overflow-x-auto">
@@ -98,6 +140,7 @@ const MyIssues = () => {
                   <button
                     className="btn btn-success text-white
                    btn-xs"
+                    onClick={() => modalref.current.showModal()}
                   >
                     Update
                   </button>
@@ -110,6 +153,148 @@ const MyIssues = () => {
                   >
                     Delete
                   </button>
+                  {/* modal */}
+                  <dialog
+                    ref={modalref}
+                    className="modal modal-bottom sm:modal-middle"
+                  >
+                    <div className="modal-box">
+                      <form onSubmit={handleIssueSubmit}>
+                        <fieldset className="fieldset grid grid-cols-2">
+                          <div className="col-span-2">
+                            <legend className="fieldset-legend">
+                              Issue Title
+                            </legend>
+                            <input
+                              type="text"
+                              name="title"
+                              className="input w-full"
+                              placeholder="e.g. Garbage"
+                              required
+                            />
+                          </div>
+                          <div>
+                            <legend className="fieldset-legend">
+                              Category
+                            </legend>
+                            <select
+                              className="select"
+                              value={cat}
+                              onChange={handleCatChange}
+                              defaultChecked={issue.category}
+                            >
+                              <option disabled={true}>Select a Category</option>
+                              <option>Garbage</option>
+                              <option>Illegal Construction</option>
+                              <option>Broken Public Property</option>
+                              <option>Road Damage</option>
+                            </select>
+                          </div>
+
+                          <div>
+                            <legend className="fieldset-legend">Status</legend>
+                            <div className="flex gap-2">
+                              <div className="flex items-center justify-center gap-1">
+                                <input
+                                  type="radio"
+                                  name="status"
+                                  className="radio radio-primary"
+                                  value="ongoing"
+                                  checked={status === "ongoing"}
+                                  onChange={handleChange}
+                                />
+                                <h1>ongoing</h1>
+                              </div>
+                              <div className="flex items-center justify-center gap-1">
+                                <input
+                                  type="radio"
+                                  name="condition"
+                                  className="radio radio-primary"
+                                  value="solved"
+                                  checked={status === "solved"}
+                                  onChange={handleChange}
+                                />
+                                <h1>Solved</h1>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div>
+                            <legend className="fieldset-legend">
+                              Amount ($)
+                            </legend>
+                            <input
+                              name="amount"
+                              type="number"
+                              className="input w-full"
+                              placeholder="e.g. 18.5"
+                              required
+                            />
+                          </div>
+
+                          <div>
+                            <legend className="fieldset-legend">
+                              Location
+                            </legend>
+                            <input
+                              name="location"
+                              type="text"
+                              className="input w-full"
+                              placeholder="City, Country"
+                              required
+                            />
+                          </div>
+
+                          <div className="col-span-2">
+                            <legend className="fieldset-legend">Email</legend>
+                            <input
+                              name="email"
+                              type="text"
+                              className="input w-full"
+                              placeholder="leli31955@nrlord.com"
+                              value={user.email}
+                            />
+                          </div>
+                          <div className="col-span-2">
+                            <legend className="fieldset-legend">
+                              Your Issues Image URL
+                            </legend>
+                            <input
+                              name="image"
+                              type="text"
+                              className="input w-full"
+                              placeholder="https://..."
+                              required
+                            />
+                          </div>
+
+                          <div className="col-span-2">
+                            <legend className="fieldset-legend">
+                              Simple Description about your Issues
+                            </legend>
+                            <textarea
+                              type="text"
+                              name="description"
+                              className="input w-full"
+                              placeholder="e.g. garbage is big problem of our city..........."
+                              required
+                            />
+                          </div>
+
+                          <button className="btn btn-neutral mt-4 col-span-2">
+                            Update Issue
+                          </button>
+                        </fieldset>
+                      </form>
+
+                      <div className="modal-action">
+                        <form method="dialog">
+                          {/* if there is a button in form, it will close the modal */}
+                          <button className="btn btn-primary">Close</button>
+                        </form>
+                      </div>
+                    </div>
+                  </dialog>
                 </th>
               </tr>
             ))}

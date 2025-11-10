@@ -113,10 +113,7 @@ const IssueDetails = () => {
         </div>
       </Container>
       {/* model */}
-      <dialog
-        id="my_modal_5"
-        className="modal modal-bottom sm:modal-middle relative"
-      >
+      <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <h1 className="text-center font-semibold text-2xl text-blue-600 p-4">
             Pay Clean-Up Contribution
@@ -209,13 +206,12 @@ const IssueDetails = () => {
               Contribute
             </button>
           </form>
-          <button
-            className="absolute top-3 right-3 cursor-pointer"
-            title="click to close"
-            onClick={() => document.getElementById("my_modal_5").close()}
-          >
-            <IoIosClose size={40} color="blue" />
-          </button>
+          <div className="modal-action">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button className="btn btn-primary">Close</button>
+            </form>
+          </div>
         </div>
       </dialog>
     </div>
