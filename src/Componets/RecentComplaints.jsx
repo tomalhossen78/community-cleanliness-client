@@ -7,7 +7,9 @@ const RecentComplaints = () => {
   const [issues, setIssues] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("http://localhost:3000/recent-complaints")
+    fetch(
+      "https://community-cleanliness-server-alpha.vercel.app/recent-complaints"
+    )
       .then((res) => res.json())
       .then((data) => {
         setIssues(data);

@@ -34,7 +34,7 @@ const AddIssues = () => {
       description,
     };
     // console.log(newIssues);
-    fetch("http://localhost:3000/issues", {
+    fetch("https://community-cleanliness-server-alpha.vercel.app/issues", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -10,7 +10,9 @@ const CommunityStats = () => {
   });
 
   useEffect(() => {
-    fetch("http://localhost:3000/community-stats")
+    fetch(
+      "https://community-cleanliness-server-alpha.vercel.app/community-stats"
+    )
       .then((res) => res.json())
       .then((data) => {
         setStats(data);

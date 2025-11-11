@@ -19,7 +19,9 @@ const MyIssues = () => {
     setStatus(e.target.value);
   };
   useEffect(() => {
-    fetch(`http://localhost:3000/my-issues?email=${user.email}`)
+    fetch(
+      `https://community-cleanliness-server-alpha.vercel.app/my-issues?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -48,13 +50,16 @@ const MyIssues = () => {
       description,
     };
     // console.log(updatedIssues);
-    fetch(`http://localhost:3000/issues/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedIssues),
-    })
+    fetch(
+      `https://community-cleanliness-server-alpha.vercel.app/issues/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedIssues),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
@@ -81,12 +86,15 @@ const MyIssues = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/issues/${id}`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
+        fetch(
+          `https://community-cleanliness-server-alpha.vercel.app/issues/${id}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             // console.log(data);

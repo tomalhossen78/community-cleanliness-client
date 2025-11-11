@@ -18,12 +18,14 @@ const IssueDetails = () => {
   const { image, title, cat, location, date, amount, description, _id } =
     details;
   useEffect(() => {
-    fetch(`http://localhost:3000/issues/${id}`)
+    fetch(`https://community-cleanliness-server-alpha.vercel.app/issues/${id}`)
       .then((res) => res.json())
       .then(
         (data) => {
           setdetails(data);
-          fetch(`http://localhost:3000/my-contributions/${id}`)
+          fetch(
+            `https://community-cleanliness-server-alpha.vercel.app/my-contributions/${id}`
+          )
             .then((res) => res.json())
             .then((data) => {
               // console.log(data);
@@ -61,13 +63,16 @@ const IssueDetails = () => {
       photoURL: user.photoURL,
     };
     console.log(newCotribution);
-    fetch("http://localhost:3000/my-contributions", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newCotribution),
-    })
+    fetch(
+      "https://community-cleanliness-server-alpha.vercel.app/my-contributions",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newCotribution),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {

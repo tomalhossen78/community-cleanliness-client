@@ -9,7 +9,9 @@ const MyContribution = () => {
   const [contributions, setContributions] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch(`http://localhost:3000/my-contributions?email=${user.email}`)
+    fetch(
+      `https://community-cleanliness-server-alpha.vercel.app/my-contributions?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

@@ -24,7 +24,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1000,
         });
-        fetch(`http://localhost:3000/users`, {
+        fetch(`https://community-cleanliness-server-alpha.vercel.app/users`, {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -59,7 +59,7 @@ const Login = () => {
           timer: 1000,
         });
         navigate(location?.state || "/");
-        fetch(`http://localhost:3000/users`, {
+        fetch(`https://community-cleanliness-server-alpha.vercel.app/users`, {
           method: "POST",
           headers: {
             "content-type": "application/json",
