@@ -31,7 +31,7 @@ const Register = () => {
     const password = form.password.value;
     console.log(displayName, email, photoURL, password);
     handleCreateUser(email, password)
-      .then(() => {
+      .then((result) => {
         updateUserProfile(displayName, photoURL);
         Swal.fire({
           position: "top-end",
@@ -40,6 +40,17 @@ const Register = () => {
           showConfirmButton: false,
           timer: 1000,
         });
+        fetch(`http://localhost:3000/users`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(result.user),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            // console.log(data);
+          });
         navigate("/");
       })
       .catch((error) => {
@@ -54,7 +65,7 @@ const Register = () => {
   };
   const googleSignIn = () => {
     handleGoogleSignIn()
-      .then(() => {
+      .then((result) => {
         // console.log(result.user);
         Swal.fire({
           position: "top-end",
@@ -63,6 +74,17 @@ const Register = () => {
           showConfirmButton: false,
           timer: 1000,
         });
+        fetch(`http://localhost:3000/users`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(result.user),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            // console.log(data);
+          });
         navigate("/");
       })
       .catch((error) => {

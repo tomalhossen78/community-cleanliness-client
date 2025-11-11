@@ -15,7 +15,7 @@ const Login = () => {
     const password = form.password.value;
     console.log(email, password);
     handleSignInuser(email, password)
-      .then(() => {
+      .then((result) => {
         // console.log(result.user);
         Swal.fire({
           position: "top-end",
@@ -24,6 +24,17 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1000,
         });
+        fetch(`http://localhost:3000/users`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(result.user),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            // console.log(data);
+          });
         navigate(location?.state || "/");
       })
       .catch((error) => {
@@ -38,8 +49,8 @@ const Login = () => {
   };
   const googleSignIn = () => {
     handleGoogleSignIn()
-      .then(() => {
-        // console.log(result.user);
+      .then((result) => {
+        console.log(result.user);
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -48,6 +59,17 @@ const Login = () => {
           timer: 1000,
         });
         navigate(location?.state || "/");
+        fetch(`http://localhost:3000/users`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(result.user),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            // console.log(data);
+          });
       })
       .catch((error) => {
         console.log(error);

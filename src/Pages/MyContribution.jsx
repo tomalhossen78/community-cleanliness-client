@@ -2,18 +2,24 @@ import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import Container from "../Componets/Container";
 import { DateFormat } from "../utility/DateFormat";
+import Loading from "../Componets/Loading";
 
 const MyContribution = () => {
   const { user } = use(AuthContext);
   const [contributions, setContributions] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     fetch(`http://localhost:3000/my-contributions?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
         setContributions(data);
+        setLoading(false);
       });
   }, [user]);
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <Container>
       <div className="overflow-x-auto">
