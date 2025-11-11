@@ -38,7 +38,7 @@ const MyContribution = () => {
           <tbody>
             {/* row 1 */}
             {contributions.map((contribution, index) => (
-              <tr>
+              <tr key={index}>
                 <td>{index + 1}</td>
                 <td>
                   <div className="flex items-center gap-3">

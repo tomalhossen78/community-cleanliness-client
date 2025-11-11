@@ -153,6 +153,7 @@ const AddIssues = () => {
                 className="input w-full"
                 placeholder="leli31955@nrlord.com"
                 value={user.email}
+                readOnly
               />
             </fieldset>
 

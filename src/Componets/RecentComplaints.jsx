@@ -25,7 +25,7 @@ const RecentComplaints = () => {
       </h1>
       <div className="grid grid-cols-4 gap-4">
         {issues.map((issue) => (
-          <Issue issue={issue} />
+          <Issue key={issue._id} issue={issue} />
         ))}
       </div>
     </Container>

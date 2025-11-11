@@ -22,7 +22,7 @@ const MyIssues = () => {
     fetch(`http://localhost:3000/my-issues?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setIssues(data);
         setLoading(false);
       });

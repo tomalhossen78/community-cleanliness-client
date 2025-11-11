@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from "react";
+import Loading from "./Loading";
 
 const CommunityStats = () => {
+  const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({
     totalUsers: 0,
     resolvedIssues: 0,
     pendingIssues: 0,
   });
 
-  // Example: Fetch stats from your backend
   useEffect(() => {
     fetch("http://localhost:3000/community-stats")
       .then((res) => res.json())
-      .then((data) => setStats(data));
+      .then((data) => {
+        setStats(data);
+        setLoading(false);
+      });
   }, []);
-
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <section className="py-16 bg-gradient-to-r from-blue-50 to-blue-100">
       <h2 className="text-3xl font-bold text-center mb-10 text-gray-800">

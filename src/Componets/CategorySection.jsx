@@ -31,9 +31,9 @@ const CategorySection = () => {
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-6 max-w-6xl mx-auto">
-        {categories.map((cat, idx) => (
+        {categories.map((cat, index) => (
           <div
-            key={idx}
+            key={index}
             className="rounded-2xl overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-all duration-300 cursor-pointer"
           >
             <img

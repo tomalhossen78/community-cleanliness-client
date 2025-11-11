@@ -5,7 +5,7 @@ import Container from "../Componets/Container";
 const Profile = () => {
   const { user } = use(AuthContext);
   const { displayName, email, photoURL } = user;
-  console.log(user);
+  // console.log(user);
   return (
     <Container
       className={"flex flex-col items-center justify-center my-6 space-y-4"}
