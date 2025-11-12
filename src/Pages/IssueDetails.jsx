@@ -7,6 +7,7 @@ import { AuthContext } from "../Context/AuthContext";
 import Loading from "../Componets/Loading";
 import Swal from "sweetalert2";
 import { DateFormat } from "../utility/DateFormat";
+import IssuesNotFoundPage from "./IssuesNotFoundPage";
 
 const IssueDetails = () => {
   const [details, setdetails] = useState({});
@@ -14,13 +15,20 @@ const IssueDetails = () => {
   const [contributors, setContributions] = useState([]);
   const [refetch, setRefetch] = useState(false);
   const [total, setTotal] = useState(0);
+  const [notFound, setNotFound] = useState(false);
   const { user } = use(AuthContext);
   const { id } = useParams();
   const { image, title, cat, location, date, amount, description, _id } =
     details;
   useEffect(() => {
     fetch(`https://community-cleanliness-server-alpha.vercel.app/issues/${id}`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          setNotFound(true);
+          setLoading(false);
+        }
+        return res.json();
+      })
       .then((data) => {
         setdetails(data);
         fetch(
@@ -101,6 +109,9 @@ const IssueDetails = () => {
   };
   if (loading) {
     return <Loading />;
+  }
+  if (notFound) {
+    return <IssuesNotFoundPage />;
   }
   return (
     <div className="bg-base-200 py-16 min-h-[90vh]">

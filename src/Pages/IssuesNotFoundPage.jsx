@@ -1,8 +1,8 @@
 import React from "react";
-import { useNavigate } from "react-router";
 import Container from "../Componets/Container";
+import { useNavigate } from "react-router";
 
-const ErrorPage = () => {
+const IssuesNotFoundPage = () => {
   const navigate = useNavigate();
   return (
     <div>
@@ -10,18 +10,18 @@ const ErrorPage = () => {
         <div className="flex flex-col justify-center items-center space-y-4 my-4">
           <img
             className="p-6 h-[400px]"
-            src="https://i.ibb.co.com/vCYQfnkP/404.jpg"
-            alt=""
+            src="https://i.ibb.co.com/fcj6myR/App-Error.png"
           />
           <h1 className="text-4xl text-[#001931] font-bold">
-            Oops, page not found!
+            Oops, Issues not found!
           </h1>
           <p className="text-[#627382]">
-            The page you are looking for is not available.
+            The issues you are requesting is not found on our system. please try
+            another issues.
           </p>
           <button
             onClick={() => navigate(-1)}
-            className="btn px-8 text-white bg-gradient-to-tl from-[#9F62F2] to-[#632EE3]"
+            className="btn px-8 text-white bg-gradient-to-tl from-blue-700 to-blue-500"
           >
             Go Back
           </button>
@@ -31,4 +31,4 @@ const ErrorPage = () => {
   );
 };
 
-export default ErrorPage;
+export default IssuesNotFoundPage;

@@ -4,6 +4,7 @@ import { AuthContext } from "../Context/AuthContext";
 import Container from "../Componets/Container";
 import Swal from "sweetalert2";
 import Loading from "../Componets/Loading";
+import IssuesNotFoundPage from "./IssuesNotFoundPage";
 
 const MyIssues = () => {
   const [issues, setIssues] = useState([]);
