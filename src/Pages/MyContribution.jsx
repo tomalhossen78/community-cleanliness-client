@@ -34,7 +34,6 @@ const MyContribution = () => {
               <th>Category</th>
               <th>Paid Amount</th>
               <th>Date</th>
-              <th>Download report</th>
             </tr>
           </thead>
           <tbody>
@@ -64,13 +63,15 @@ const MyContribution = () => {
                 </td>
                 <td>${contribution.amount}</td>
                 <td>{DateFormat(contribution.date)}</td>
-                <th>
-                  <button className="btn btn-secondary btn-xs">Download</button>
-                </th>
               </tr>
             ))}
           </tbody>
         </table>
+      </div>
+      <div className="max-w-5xl mx-auto my-10">
+        <button className="btn btn-primary w-full p-6 text-lg">
+          Download report
+        </button>
       </div>
     </Container>
   );
