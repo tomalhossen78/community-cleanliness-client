@@ -51,7 +51,6 @@ const IssueDetails = () => {
     );
     setTotal(totalContributeAmount);
   }, [contributors]);
-  console.log(total);
 
   const formattedDate = DateFormat(date);
   const handleAddContribute = (e) => {
