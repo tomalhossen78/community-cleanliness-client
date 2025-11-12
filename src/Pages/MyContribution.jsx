@@ -25,10 +25,10 @@ const MyContribution = () => {
   }
   return (
     <Container>
-      <div className="overflow-x-auto">
-        <table className="table">
+      <div className="overflow-x-auto w-full  mt-20">
+        <table className="table w-full table-zebra">
           {/* head */}
-          <thead>
+          <thead className="bg-base-200">
             <tr>
               <th>No.</th>
               <th>Issue Title</th>
@@ -41,29 +41,28 @@ const MyContribution = () => {
             {/* row 1 */}
             {contributions.map((contribution, index) => (
               <tr key={index}>
-                <td>{index + 1}</td>
+                <td className="whitespace-nowrap">{index + 1}</td>
                 <td>
                   <div className="flex items-center gap-3">
-                    <div className="avatar">
-                      <div className="mask mask-squircle h-12 w-12">
-                        <img
-                          src={user.photoURL}
-                          alt="Avatar Tailwind CSS Component"
-                        />
+                    <div className="avatar ">
+                      <div className="mask mask-squircle h-10 w-10">
+                        <img src={user.photoURL} />
                       </div>
                     </div>
-                    <div>
+                    <div className="min-w-[200px]">
                       <div className="font-semibold">{contribution.title}</div>
                     </div>
                   </div>
                 </td>
-                <td>
+                <td className="whitespace-nowrap">
                   <span className="badge badge-ghost badge-sm">
                     {contribution.category}
                   </span>
                 </td>
                 <td>${contribution.amount}</td>
-                <td>{DateFormat(contribution.date)}</td>
+                <td className="whitespace-nowrap">
+                  {DateFormat(contribution.date)}
+                </td>
               </tr>
             ))}
           </tbody>

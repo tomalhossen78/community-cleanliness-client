@@ -113,14 +113,14 @@ const IssueDetails = () => {
     <div className="bg-base-200 py-16 min-h-[90vh]">
       <Container>
         <div>
-          <div className="flex bg-base-100 shadow-md p-8 rounded-2xl gap-8 items-center">
+          <div className="md:flex bg-base-100 shadow-md p-8 rounded-2xl gap-8 items-center">
             <div className="flex-1">
               <img className="rounded-xl" src={image} alt="" />
             </div>
             <div className="space-y-6 flex-1">
               <h1 className="text-3xl font-bold text-blue-700">{title}</h1>
               <p className="text-red-600">{cat}</p>
-              <div className="flex gap-4">
+              <div className="md:flex gap-4">
                 <div className="flex items-center gap-2 bg-base-300 p-2">
                   <FaLocationDot color="blue" size={20} />
                   <p className="text-blue-700 text-lg font-medium">
@@ -152,7 +152,7 @@ const IssueDetails = () => {
             </div>
           </div>
           {/* table for contributers */}
-          <div className="overflow-x-auto mt-20 bg-base-100 py-10 px-20 shadow-sm rounded-2xl">
+          <div className="overflow-x-auto mt-20 bg-base-100 py-10 px-4 md:px-20 shadow-sm rounded-2xl">
             <h1 className="text-center font-medium text-xl pb-8 text-green-700">
               All Contributors for this Issues
             </h1>
@@ -162,7 +162,7 @@ const IssueDetails = () => {
                 <tr>
                   <th>No.</th>
                   <th>Name</th>
-                  <th>Contribution Amount</th>
+                  <th>Contribution</th>
                 </tr>
               </thead>
               <tbody>
@@ -178,7 +178,7 @@ const IssueDetails = () => {
                           </div>
                         </div>
                         <div>
-                          <div className="font-semibold">
+                          <div className="font-semibold min-w-[100px]">
                             {contribution.name}
                           </div>
                         </div>
@@ -192,13 +192,12 @@ const IssueDetails = () => {
                   </tr>
                 ))}
                 <tr className="border-t-2 border-blue-200">
-                  <td></td>
-                  <td className="text-xl font-medium text-blue-600">
-                    ToTal Amount {"    "}=
+                  <td colSpan={2} className="text-md font-medium text-blue-600">
+                    ToTal Amount
                   </td>
                   <td>
-                    <span className="text-xl font-medium text-blue-600">
-                      ${total}
+                    <span className="text-md font-medium text-blue-600">
+                      = {""}${total}
                     </span>
                   </td>
                 </tr>

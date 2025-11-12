@@ -57,14 +57,14 @@ const AddIssues = () => {
   };
   return (
     <div>
-      <div className="bg-gray-100 min-h-screen">
-        <div className="w-3xl mx-auto">
+      <div className="bg-gray-100 mt-16 mb-8">
+        <div className="md:w-3xl w-sm mx-auto">
           <h1 className="text-4xl font-bold pt-4 text-center">
             Add <span className="text-primary">Issues</span>
           </h1>
           <form
             onSubmit={handleAddIssues}
-            className="bg-white p-10 m-4 grid grid-cols-2 gap-x-6"
+            className="bg-white md:p-10 p-6 m-4 grid md:grid-cols-2 gap-x-6"
           >
             <fieldset className="fieldset">
               <legend className="fieldset-legend">Issue Title</legend>
@@ -134,7 +134,7 @@ const AddIssues = () => {
                 required
               />
             </fieldset>
-            <fieldset className="fieldset col-span-1">
+            <fieldset className="fieldset md:col-span-1 col-span-2">
               <legend className="fieldset-legend">Location</legend>
               <input
                 name="location"
@@ -145,7 +145,7 @@ const AddIssues = () => {
               />
             </fieldset>
 
-            <fieldset className="fieldset">
+            <fieldset className="fieldset md:col-span-1 col-span-2">
               <legend className="fieldset-legend">Email</legend>
               <input
                 name="email"

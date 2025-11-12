@@ -30,12 +30,12 @@ const Issues = () => {
     return <Loading />;
   }
   return (
-    <Container className="my-6">
-      <h1 className="text-4xl text-center mb-6 font-bold">
+    <Container className="mt-20">
+      <h1 className="text-3xl text-center mb-6 font-bold">
         All <span className="text-blue-700">Issues</span>
       </h1>
-      <div className="flex  justify-between">
-        <p className="text-2xl text-blue-600 font-semibold flex-1">
+      <div className="flex  justify-between px-4">
+        <p className="md:text-2xl text-md text-blue-600 font-semibold flex-1">
           Issues found({filterIssues.length})
         </p>
         <div className="flex gap-4 mb-6 flex-2 justify-end">
@@ -66,7 +66,7 @@ const Issues = () => {
           </select>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:p-0 p-4">
         {filterIssues.length > 0 ? (
           filterIssues.map((issue) => <Issue key={issue._id} issue={issue} />)
         ) : (
