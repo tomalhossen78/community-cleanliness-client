@@ -13,12 +13,14 @@ const Footer = () => {
         <div className="py-8">
           <div className="grid grid-cols-2  lg:grid-cols-7 justify-between py-16 gap-10 text-sm p-6">
             <div className="col-span-2">
-              <h1
-                onClick={() => navigate("/")}
-                className="text-xl font-medium pb-6 cursor-pointer"
-              >
-                COMMUNITY-CLEANLINESS
-              </h1>
+              <div className="flex">
+                <h1
+                  onClick={() => navigate("/")}
+                  className="text-xl font-medium pb-6 cursor-pointer"
+                >
+                  COMMUNITY-CLEANLINESS
+                </h1>{" "}
+              </div>
               <p className="text-white">
                 At COMMUNITY-CLEANLINESS-WEBAPP,it helps users report and track
                 local issues like garbage, illegal construction, broken public

@@ -56,17 +56,17 @@ const AddIssues = () => {
       });
   };
   return (
-    <div>
-      <div className="bg-gray-100 mt-16 mb-8">
-        <div className="md:w-3xl w-sm mx-auto">
-          <h1 className="text-4xl font-bold pt-4 text-center">
-            Add <span className="text-primary">Issues</span>
-          </h1>
-          <form
-            onSubmit={handleAddIssues}
-            className="bg-white md:p-10 p-6 m-4 grid md:grid-cols-2 gap-x-6"
-          >
-            <fieldset className="fieldset">
+    <div className="my-16">
+      <div className="md:w-3xl w-sm mx-auto">
+        <h1 className="text-4xl font-bold pt-4 text-center">
+          Add <span className="text-primary">Issues</span>
+        </h1>
+        <form
+          onSubmit={handleAddIssues}
+          className="bg-accent-content/60 p-6 m-8"
+        >
+          <fieldset className="fieldset grid grid-cols-2">
+            <div>
               <legend className="fieldset-legend">Issue Title</legend>
               <input
                 type="text"
@@ -75,8 +75,9 @@ const AddIssues = () => {
                 placeholder="e.g. Garbage"
                 required
               />
-            </fieldset>
-            <fieldset className="fieldset">
+            </div>
+
+            <div>
               <legend className="fieldset-legend">Category</legend>
               <select className="select" value={cat} onChange={handleCatChange}>
                 <option disabled={true}>Select a Category</option>
@@ -85,8 +86,9 @@ const AddIssues = () => {
                 <option>Broken Public Property</option>
                 <option>Road Damage</option>
               </select>
-            </fieldset>
-            <fieldset className="fieldset">
+            </div>
+
+            <div>
               <legend className="fieldset-legend">Amount ($)</legend>
               <input
                 name="amount"
@@ -95,8 +97,9 @@ const AddIssues = () => {
                 placeholder="e.g. 18.5"
                 required
               />
-            </fieldset>
-            <fieldset className="fieldset">
+            </div>
+
+            <div>
               <legend className="fieldset-legend">Status</legend>
               <div className="flex gap-2">
                 <div className="flex items-center justify-center gap-1">
@@ -122,9 +125,8 @@ const AddIssues = () => {
                   <h1>Solved</h1>
                 </div>
               </div>
-            </fieldset>
-
-            <fieldset className="fieldset col-span-2">
+            </div>
+            <div className="col-span-2">
               <legend className="fieldset-legend">Your Issues Image URL</legend>
               <input
                 name="image"
@@ -133,8 +135,9 @@ const AddIssues = () => {
                 placeholder="https://..."
                 required
               />
-            </fieldset>
-            <fieldset className="fieldset md:col-span-1 col-span-2">
+            </div>
+
+            <div>
               <legend className="fieldset-legend">Location</legend>
               <input
                 name="location"
@@ -143,9 +146,9 @@ const AddIssues = () => {
                 placeholder="City, Country"
                 required
               />
-            </fieldset>
+            </div>
 
-            <fieldset className="fieldset md:col-span-1 col-span-2">
+            <div>
               <legend className="fieldset-legend">Email</legend>
               <input
                 name="email"
@@ -155,9 +158,9 @@ const AddIssues = () => {
                 value={user.email}
                 readOnly
               />
-            </fieldset>
+            </div>
 
-            <fieldset className="fieldset col-span-2">
+            <div className="col-span-2">
               <legend className="fieldset-legend">
                 Simple Description about your Issues
               </legend>
@@ -168,15 +171,15 @@ const AddIssues = () => {
                 placeholder="e.g. garbage is big problem of our city..........."
                 required
               />
-            </fieldset>
-            <button
-              type="sumbit"
-              className="btn btn-primary w-full col-span-2 my-4 text-lg p-4"
-            >
-              Add Issue
-            </button>
-          </form>
-        </div>
+            </div>
+          </fieldset>
+          <button
+            type="sumbit"
+            className="btn btn-primary w-full col-span-2 my-4 text-lg p-4"
+          >
+            Add Issue
+          </button>
+        </form>
       </div>
     </div>
   );
