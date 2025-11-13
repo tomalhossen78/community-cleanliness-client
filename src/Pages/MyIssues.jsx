@@ -313,7 +313,7 @@ const MyIssues = () => {
                             />
                           </div>
 
-                          <button className="btn btn-neutral mt-4 col-span-2">
+                          <button className="btn px-6 bg-primary text-white font-bold text-md rounded-md shadow-md hover:bg-accent transition-transform hover:scale-105 mt-4 col-span-2">
                             Update Issue
                           </button>
                         </fieldset>
@@ -322,7 +322,9 @@ const MyIssues = () => {
                       <div className="modal-action">
                         <form method="dialog">
                           {/* if there is a button in form, it will close the modal */}
-                          <button className="btn btn-primary">Close</button>
+                          <button className="btn px-6 bg-primary text-white font-bold text-md rounded-md shadow-md hover:bg-accent transition-transform hover:scale-105 ">
+                            Close
+                          </button>
                         </form>
                       </div>
                     </div>

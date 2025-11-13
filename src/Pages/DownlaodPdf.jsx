@@ -20,7 +20,7 @@ const DownlaodPdf = ({ contributions }) => {
     <div>
       <button
         onClick={downlaodReport}
-        className="btn btn-primary w-full p-6 text-lg"
+        className="btn w-full bg-primary text-white font-bold text-md rounded-md shadow-md hover:bg-accent transition-transform hover:scale-105 mt-4 col-span-2"
       >
         Download report
       </button>

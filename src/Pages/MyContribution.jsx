@@ -26,7 +26,7 @@ const MyContribution = () => {
   }
   return (
     <Container>
-      <div className="overflow-x-auto w-full  mt-20">
+      <div className="overflow-x-auto w-full p-4 mt-20">
         <table className="table w-full table-zebra">
           {/* head */}
           <thead className="bg-base-200">
@@ -69,7 +69,7 @@ const MyContribution = () => {
           </tbody>
         </table>
       </div>
-      <div className="max-w-5xl mx-auto my-10">
+      <div className="max-w-5xl mx-auto my-10 px-6">
         <DownlaodPdf contributions={contributions} />
       </div>
     </Container>
