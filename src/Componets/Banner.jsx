@@ -17,7 +17,7 @@ import {
 
 const Banner = () => {
   return (
-    <div className="mt-18 mb-10 bg-[#F5F7FA]">
+    <div className="mt-18 mb-10 bg-accent-content">
       <Swiper
         modules={[Pagination, Scrollbar, A11y, Autoplay, EffectFade]}
         spaceBetween={30}
@@ -30,19 +30,19 @@ const Banner = () => {
           delay: 3000,
           disableOnInteraction: false,
         }}
-        className="max-w-7xl mx-auto"
+        className="bg-accent-content max-w-7xl mx-auto"
       >
         <SwiperSlide>
-          <div className="flex flex-col md:flex-row items-center justify-between bg-[#F5F7FA] px-6 md:px-10">
+          <div className="flex flex-col md:flex-row items-center justify-between bg-accent-content px-6 md:px-10 py-6">
             <div className="md:w-1/2 text-center md:text-left space-y-4">
-              <h1 className="text-3xl md:text-4xl font-bold text-accent">
+              <h1 className="text-2xl md:text-3xl lg:4xl font-bold text-accent">
                 Keep Our City Clean
               </h1>
-              <p className="text-md md:text-lg text-accent">
+              <p className="text-sm md:text-md lg:text-lg text-accent">
                 Join hands to report garbage and ensure a cleaner, healthier
                 community for everyone.
               </p>
-              <button className="px-6 py-3 bg-green-500 text-white font-bold text-md rounded-md shadow-md hover:bg-black transition-transform hover:scale-105">
+              <button className="px-6 py-3 bg-primary text-white font-bold text-md rounded-md shadow-md hover:bg-black transition-transform hover:scale-105">
                 Report Garbage Now
               </button>
             </div>
@@ -56,17 +56,16 @@ const Banner = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="flex flex-col md:flex-row items-center justify-between bg-[#F5F7FA]  px-6 md:px-10">
+          <div className="flex flex-col md:flex-row items-center justify-between bg-accent-content px-6 py-6 md:px-10">
             <div className="md:w-1/2 text-center md:text-left space-y-4">
-              <h1 className="text-3xl md:text-4xl font-bold text-accent">
+              <h1 className="text-2xl md:text-3xl lg:4xl font-bold text-accent">
                 Sort Smart, Live Green
               </h1>
-              <p className="text-md md:text-lg text-accent">
-                Proper recycling is the first step to a litter-free city. Learn
-                the local guidelines and help us keep valuable materials out of
-                our landfills.
+              <p className="text-sm md:text-md lg:text-lg text-accent">
+                Proper recycling keeps our city clean—follow local guidelines to
+                reduce waste and protect the environment.
               </p>
-              <button className="px-6 py-3 bg-green-500 text-white font-bold text-md rounded-md shadow-md hover:bg-black transition-transform hover:scale-105">
+              <button className="px-6 py-3 bg-primary text-white font-bold text-md rounded-md shadow-md hover:bg-black transition-transform hover:scale-105">
                 View Recycling Guidelines
               </button>
             </div>
@@ -80,17 +79,16 @@ const Banner = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="flex flex-col md:flex-row items-center justify-between bg-[#F5F7FA]  px-6 md:px-10">
+          <div className="flex flex-col md:flex-row items-center justify-between bg-accent-content px-6 md:px-10 py-6">
             <div className="md:w-1/2 text-center md:text-left space-y-4">
-              <h1 className="text-3xl md:text-4xl font-bold text-accent">
+              <h1 className="text-2xl md:text-3xl lg:4xl font-bold text-accent">
                 Plant a Tree, Grow Our Future
               </h1>
-              <p className="text-md md:text-lg text-accent">
-                Participate in our urban greening initiative. Trees clean our
-                air, reduce energy costs, and make our neighborhoods more
-                beautiful and sustainable.
+              <p className="text-sm md:text-md lg:text-lg text-accent">
+                Join our urban greening initiative to plant trees that purify
+                air, cut energy costs, and beautify neighborhoods.
               </p>
-              <button className="px-6 py-3 bg-green-500 text-white font-bold text-md rounded-md shadow-md hover:bg-black transition-transform hover:scale-105">
+              <button className="px-6 py-3 bg-primary text-white font-bold text-md rounded-md shadow-md hover:bg-black transition-transform hover:scale-105">
                 Join a Planting Event
               </button>
             </div>

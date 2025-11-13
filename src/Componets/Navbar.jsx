@@ -155,7 +155,7 @@ const NavBar = () => {
             </div>
             <Link
               to={"/"}
-              className="btn btn-ghost text-[24px] text-secondary font-bold"
+              className="btn btn-ghost text-[24px] text-primary font-bold"
             >
               <img
                 className="h-10 mr-2"
@@ -204,7 +204,7 @@ const NavBar = () => {
                   <li>
                     <button
                       onClick={logoutUser}
-                      className="btn-xs bg-green-500 text-white font-bold text-md rounded-md shadow-md hover:bg-black transition-transform hover:scale-105"
+                      className="btn-xs bg-primary text-white font-bold text-md rounded-md shadow-md hover:bg-black transition-transform hover:scale-105"
                     >
                       <IoLogOut /> Logout
                     </button>

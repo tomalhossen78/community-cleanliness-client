@@ -19,7 +19,7 @@ const CategorySection = () => {
     return <Animation />;
   }
   return (
-    <div className="my-12">
+    <div className="my-12 md:p-0 p-8">
       <h2 className="text-3xl font-semibold text-accent text-center mb-8">
         Category
       </h2>

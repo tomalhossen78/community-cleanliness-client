@@ -31,12 +31,12 @@ const Issues = () => {
     return <Animation />;
   }
   return (
-    <Container className="mt-20">
-      <h1 className="text-3xl text-center mb-6 font-bold">
-        All <span className="text-blue-700">Issues</span>
+    <Container className="mt-24">
+      <h1 className="text-3xl font-semibold text-accent text-center mb-12">
+        All Issues
       </h1>
       <div className="flex  justify-between px-4">
-        <p className="md:text-2xl text-md text-blue-600 font-semibold flex-1">
+        <p className="md:text-2xl text-md text-primary font-semibold flex-1">
           Issues found({filterIssues.length})
         </p>
         <div className="flex gap-4 mb-6 flex-2 justify-end">

@@ -11,14 +11,10 @@ const Issue = ({ issue }) => {
     <div
       className="flex flex-col bg-base-200 p-6 rounded-xl space-y-4 shadow-md 
             transform transition duration-300 ease-in-out 
-            hover:scale-105 hover:bg-green-50 hover:-translate-y-1"
+            hover:scale-105 hover:bg-accent-content hover:-translate-y-1"
     >
       <div className="w-full h-[250px]">
-        <img
-          className="rounded-xl w-full h-full object-cover"
-          src={image}
-          alt=""
-        />
+        <img className="rounded-xl w-full h-full object-cover" src={image} />
       </div>
       <div className="px-2 space-y-4">
         <ul className="flex justify-between text-accent">
@@ -35,7 +31,7 @@ const Issue = ({ issue }) => {
             <span>{location}</span>
           </li>
         </ul>
-        <h1 className="text-black text-[20px] font-semibold">{title}</h1>
+        <h1 className="text-primary text-[20px] font-semibold">{title}</h1>
         <ul className="flex justify-between text-accent">
           <Link
             to={`/issues-details/${_id}`}

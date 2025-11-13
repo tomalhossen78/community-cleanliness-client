@@ -76,41 +76,64 @@ const Login = () => {
       });
   };
   return (
-    <Container className="my-20">
-      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto">
-        <h1 className="text-center pt-4 font-bold text-3xl">Login</h1>
+    <Container className="my-24 flex justify-center items-center">
+      <div className="card w-full max-w-md bg-base-100 shadow-xl border border-accent-content rounded-2xl p-6 hover:shadow-xl transition duration-300">
+        <h1 className="text-center text-4xl font-bold text-primary mb-6">
+          Welcome Back
+        </h1>
+        <p className="text-center text-accent mb-6">
+          Login to continue to your account
+        </p>
+
         <div className="card-body">
-          <form onSubmit={handleOnsubmit} className="fieldset">
-            <label className="label">Email</label>
-            <input
-              type="email"
-              className="input"
-              placeholder="Email"
-              name="email"
-              required
-            />
-            <label className="label">Password</label>
-            <input
-              type="password"
-              className="input"
-              placeholder="Password"
-              name="password"
-              required
-            />
+          <form onSubmit={handleOnsubmit} className="space-y-4">
             <div>
-              <a className="link link-hover">Forgot password?</a>
+              <label className="label font-semibold">Email</label>
+              <input
+                type="email"
+                className="input input-bordered w-full focus:outline-none focus:ring-2 focus:ring-primary"
+                placeholder="Enter your email"
+                name="email"
+                required
+              />
             </div>
-            <button className="btn btn-neutral mt-4">Login</button>
+
+            <div>
+              <label className="label font-semibold">Password</label>
+              <input
+                type="password"
+                className="input input-bordered w-full focus:outline-none focus:ring-2 focus:ring-primary"
+                placeholder="Enter your password"
+                name="password"
+                required
+              />
+            </div>
+
+            <div className="flex justify-end">
+              <a className="link link-hover text-sm text-primary">
+                Forgot password?
+              </a>
+            </div>
+
+            <button
+              type="submit"
+              className="btn w-full bg-primary text-white font-bold text-md rounded-md shadow-md hover:bg-black transition-transform hover:scale-105"
+            >
+              Login
+            </button>
           </form>
-          {/* google */}
+
+          <div className="divider text-gray-400">OR</div>
+
+          {/* Google Login */}
           <button
             onClick={googleSignIn}
-            className="btn bg-white text-black border-[#e5e5e5]"
+            className="btn bg-white text-gray-700 border border-gray-300 hover:bg-gray-100 w-full flex items-center justify-center gap-2"
           >
             <svg
               aria-label="Google logo"
-              width="16"
-              height="16"
+              width="18"
+              height="18"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
             >
@@ -136,14 +159,16 @@ const Login = () => {
             </svg>
             Login with Google
           </button>
-          <div className="text-center text-md">
-            <p className="">
-              New to our website? Please {""}
+
+          {/* Register Link */}
+          <div className="text-center text-sm mt-6">
+            <p>
+              New to our website?{" "}
               <NavLink
-                className="link link-hover text-blue-600"
+                className="text-primary font-medium hover:underline"
                 to={"/register"}
               >
-                Register
+                Create an account
               </NavLink>
             </p>
           </div>
