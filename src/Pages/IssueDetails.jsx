@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import { DateFormat } from "../utility/DateFormat";
 import IssuesNotFoundPage from "./IssuesNotFoundPage";
 import Animation from "../utility/Animation";
+import { RiMoneyDollarCircleFill } from "react-icons/ri";
 
 const IssueDetails = () => {
   const [details, setdetails] = useState({});
@@ -111,7 +112,7 @@ const IssueDetails = () => {
     return <IssuesNotFoundPage />;
   }
   return (
-    <div className="bg-base-200 py-16 min-h-[90vh]">
+    <div className="bg-base-200 py-24 min-h-[90vh]">
       <Container>
         <div>
           <div className="md:flex bg-base-100 shadow-md p-8 rounded-2xl gap-8 items-center">
@@ -119,25 +120,26 @@ const IssueDetails = () => {
               <img className="rounded-xl" src={image} alt="" />
             </div>
             <div className="space-y-6 flex-1">
-              <h1 className="text-3xl font-bold text-blue-700">{title}</h1>
-              <p className="text-red-600">{cat}</p>
+              <h1 className="text-3xl font-bold text-primary">{title}</h1>
+              <p className="text-accent">{cat}</p>
               <div className="md:flex gap-4">
                 <div className="flex items-center gap-2 bg-base-300 p-2">
-                  <FaLocationDot color="blue" size={20} />
-                  <p className="text-blue-700 text-lg font-medium">
+                  <FaLocationDot size={20} />
+                  <p className="text-base-700 text-lg font-medium">
                     {location}
                   </p>
                 </div>
-                <div className="flex items-center text-green-600 gap-2 p-2 bg-base-300">
+                <div className="flex items-center text-primary gap-2 p-2 bg-base-300">
                   <IoIosTime size={20} />
 
                   <p className="text-lg font-medium">{formattedDate}</p>
                 </div>
               </div>
-              <div className="font-semibold text-2xl text-pink-500">
-                $ {amount}
+              <div className="flex gap-2 items-center font-semibold text-2xl text-primary">
+                <RiMoneyDollarCircleFill size={30} />
+                <div className="">{amount}</div>
               </div>
-              <div className="bg-blue-100 px-4 py-6 rounded-xl my-4">
+              <div className="bg-accent-content px-4 py-6 rounded-xl my-4">
                 {description}
               </div>
               <div className="flex gap-4">
@@ -145,7 +147,7 @@ const IssueDetails = () => {
                   onClick={() =>
                     document.getElementById("my_modal_5").showModal()
                   }
-                  className="btn flex-1 btn-md text-left bg-linear-to-r from-green-500 to-green-700 text-white"
+                  className="btn w-full bg-primary text-white font-bold text-md rounded-md shadow-md hover:bg-black transition-transform hover:scale-105"
                 >
                   Pay Clean-Up Contribution
                 </button>
@@ -154,56 +156,65 @@ const IssueDetails = () => {
           </div>
           {/* table for contributers */}
           <div className="overflow-x-auto mt-20 bg-base-100 py-10 px-4 md:px-20 shadow-sm rounded-2xl">
-            <h1 className="text-center font-medium text-xl pb-8 text-green-700">
+            <h1 className="text-center font-medium text-xl pb-8 text-primary">
               All Contributors for this Issues
             </h1>
-            <table className="table">
-              {/* head */}
-              <thead>
-                <tr>
-                  <th>No.</th>
-                  <th>Name</th>
-                  <th>Contribution</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* row 1 */}
-                {contributors.map((contribution, index) => (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>
-                      <div className="flex items-center gap-3">
-                        <div className="avatar">
-                          <div className="mask mask-squircle h-12 w-12">
-                            <img src={contribution.photoURL} />
+            {contributors.length > 0 ? (
+              <table className="table">
+                {/* head */}
+                <thead>
+                  <tr>
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th>Contribution</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {/* row 1 */}
+                  {contributors.map((contribution, index) => (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>
+                        <div className="flex items-center gap-3">
+                          <div className="avatar">
+                            <div className="mask mask-squircle h-12 w-12">
+                              <img src={contribution.photoURL} />
+                            </div>
+                          </div>
+                          <div>
+                            <div className="font-semibold min-w-[100px]">
+                              {contribution.name}
+                            </div>
                           </div>
                         </div>
-                        <div>
-                          <div className="font-semibold min-w-[100px]">
-                            {contribution.name}
-                          </div>
-                        </div>
-                      </div>
+                      </td>
+                      <td>
+                        <span className="text-lg font-medium">
+                          ${contribution.amount}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                  <tr className="bg-accent-content">
+                    <td
+                      colSpan={2}
+                      className="text-xl font-medium text-primary"
+                    >
+                      Total Amount
                     </td>
                     <td>
-                      <span className="text-lg font-medium">
-                        ${contribution.amount}
+                      <span className="text-xl font-medium text-primary">
+                        = {""}${total}
                       </span>
                     </td>
                   </tr>
-                ))}
-                <tr className="border-t-2 border-blue-200">
-                  <td colSpan={2} className="text-md font-medium text-blue-600">
-                    ToTal Amount
-                  </td>
-                  <td>
-                    <span className="text-md font-medium text-blue-600">
-                      = {""}${total}
-                    </span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                </tbody>
+              </table>
+            ) : (
+              <p className="text-center">
+                This issue hasn't received any contributions yet.
+              </p>
+            )}
           </div>
           {/* model */}
           <dialog
@@ -211,12 +222,12 @@ const IssueDetails = () => {
             className="modal modal-bottom sm:modal-middle"
           >
             <div className="modal-box">
-              <h1 className="text-center font-semibold text-2xl text-blue-600 p-4">
+              <h1 className="text-center font-semibold text-2xl text-primary p-4">
                 Pay Clean-Up Contribution
               </h1>
               <form
                 onSubmit={handleAddContribute}
-                className="bg-white grid grid-cols-2 gap-x-2"
+                className="grid grid-cols-2 gap-x-2"
               >
                 <fieldset className="fieldset">
                   <legend className="fieldset-legend">Issue Title</legend>
