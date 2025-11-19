@@ -62,7 +62,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact 📬
 
-**🔗 Live URL:** [community-cleanliness-client](https://resume-craft-nine.vercel.app/)
+**🔗 Live URL:** [community-cleanliness-client](https://community-cleanliness-webapp.netlify.app/)
 
 Tomal Hossen - [@tomalhossencse](https://www.linkedin.com/in/tomalhossencse/) - tomalhossen78@gmail.com 
 
